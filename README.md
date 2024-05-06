@@ -44,13 +44,13 @@ Untuk menjalankan program ini diperlukan:
 
 ## Usage
 Windows :
-Pastikan sedang di folder src
-compile:
+- Pastikan sedang di folder src
+- compile:
 `javac --module-path "C:\Program Files\Java\javafx-sdk-22.0.1\lib" --add-modules javafx.controls,javafx.fxml App.java MainSceneController.java`
-run program:
+- run program:
 `java --module-path "C:\Program Files\Java\javafx-sdk-22.0.1\lib" --add-modules javafx.controls,javafx.fxml App`
-keterangan: "C:\Program Files\Java\javafx-sdk-22.0.1\lib" diganti dengan letak javafx-sdk/lib pada device pengguna
-Setelah program GUI berjalan dengan baik, masukkan input sesuai keinginan.
+- keterangan: "C:\Program Files\Java\javafx-sdk-22.0.1\lib" diganti dengan letak javafx-sdk/lib pada device pengguna
+- Setelah program GUI berjalan dengan baik, masukkan input sesuai keinginan.
 
 ## Features
 1. Validasi kata masukan.
