@@ -40,7 +40,7 @@ Untuk menjalankan program ini diperlukan:
 (https://www.azul.com/downloads/?version=java-22&os=linux&package=jdk#zulu) untuk linux
 - JavaFX SDK version 22.0.1
 (https://gluonhq.com/products/javafx/) untuk windows dan linux (filter pada website untuk memilih)
-Langkah-langkah setup javafx bisa dilihat pada pranala: https://openjfx.io/openjfx-docs/
+- Langkah-langkah setup javafx bisa dilihat pada pranala: https://openjfx.io/openjfx-docs/
 
 ## Usage
 Windows :
