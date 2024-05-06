@@ -7,6 +7,7 @@
 * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Usage](#usage)
+* [Features](#features)
 * [Restrictions](#restriction)
 <!-- * [License](#license) -->
 
@@ -26,15 +27,20 @@
 
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 
 ## Setup
 Untuk menjalankan program ini diperlukan:
-- JDK 11 atau yang lebih baru (https://www.azul.com/downloads/?version=java-22&os=windows&package=jdk#zulu)
-- JavaFX SDK version 22.0.1  (https://gluonhq.com/products/javafx/)
-Langkah-langkah setup program bisa dilihat pada link: https://openjfx.io/openjfx-docs/
+- JDK 11 atau yang lebih baru
+(https://www.azul.com/downloads/?version=java-22&os=windows&package=jdk#zulu) untuk windows
+(https://www.azul.com/downloads/?version=java-22&os=linux&package=jdk#zulu) untuk linux
+- JavaFX SDK version 22.0.1
+(https://gluonhq.com/products/javafx/) untuk windows dan linux (filter pada website untuk memilih)
+Langkah-langkah setup javafx bisa dilihat pada pranala: https://openjfx.io/openjfx-docs/
 
 ## Usage
 Windows :
@@ -46,6 +52,9 @@ run program:
 keterangan: "C:\Program Files\Java\javafx-sdk-22.0.1\lib" diganti dengan letak javafx-sdk/lib pada device pengguna
 Setelah program GUI berjalan dengan baik, masukkan input sesuai keinginan.
 
+## Features
+1. Validasi kata masukan.
+2. Menampilkan memory usage.
+
 ## Restrictions
 Folder word hanya memiliki kumpulan kata dengan jumlah huruf hingga 15.
-Waktu pembuatan graf akan naik secara drastis mulai dari 8 hurud ke atas.
