@@ -35,7 +35,11 @@ public class UCS {
 				}
 			}
 		}
+		System.out.println(pathResult);
 		Tuple returnTuple = new Tuple(pathResult, nodeVisited);
+		if (!found) {
+			returnTuple.x.add("Path not found");
+		}
         return returnTuple;
 	}
 }

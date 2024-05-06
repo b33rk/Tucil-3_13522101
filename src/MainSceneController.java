@@ -46,6 +46,9 @@ public class MainSceneController{
 
     @FXML
     private TextField endTextField;
+    
+    @FXML
+    private Label MemoryUsage;
 
     @FXML
     private ListView<String> listAnswer;
@@ -61,17 +64,23 @@ public class MainSceneController{
 
     private double graphElapsedTime;
     private double algorithmElapsedTime;
+    private long memoryUsage;
+    private Map<String, ArrayList<String>> map;
+    private String Start;
+    private String End;
+    private Tuple result;
 
     @FXML
     void BeginSearch(ActionEvent event) {
-        String Start = startTextField.getText().toUpperCase();
-        String End = endTextField.getText().toUpperCase();
+        Start = startTextField.getText().toUpperCase();
+        End = endTextField.getText().toUpperCase();
         Start = Algo.ValidString(Start);
         End = Algo.ValidString(End);
         wordDoesntexit1.setVisible(false);
         wordDoesntexit2.setVisible(false);
         nodeVisited.setVisible(false);
         makingGraph.setVisible(false);
+        MemoryUsage.setVisible(false);
         time.setVisible(false);
         time1.setVisible(false);
         listAnswer.setItems(null);
@@ -84,7 +93,7 @@ public class MainSceneController{
             
             
             String FileName = Integer.toString(Start.length()) + ".txt";
-            dict = GetFile.findFile("src/word", FileName);
+            dict = GetFile.findFile("word", FileName);
             if (!dict.contains(Start)) {
                 wordDoesntexit1.setVisible(true);
             }
@@ -92,56 +101,86 @@ public class MainSceneController{
                 wordDoesntexit2.setVisible(true);
             }
             if (!wordDoesntexit1.visibleProperty().get() && !wordDoesntexit2.visibleProperty().get()) {
-                Task<Tuple> task = new Task<Tuple>() {
+                Task<Void> task = new Task<Void>() {
                     @Override
-                    protected Tuple call() throws Exception {
+                    protected Void call() throws Exception {
                         // Background task: Make graph
                         makingGraph.setVisible(true);
-                        String Start = Algo.ValidString(startTextField.getText().toUpperCase());
-                        String End = Algo.ValidString(endTextField.getText().toUpperCase());
+                        
                         long startTime = System.nanoTime();
-                        ArrayList<String> dict = GetFile.findFile("src/word", FileName);
-                        Map<String, ArrayList<String>> map = MakeGraf.makeGraf(dict);
+                        ArrayList<String> dict = GetFile.findFile("word", FileName);
+                        map = MakeGraf.makeGraf(dict);
                         long endTime = System.nanoTime();
                         graphElapsedTime = (endTime - startTime) / 1e6; // milliseconds
+                        return null;
 
-                        // Background task: Run algorithm
-                        updateMessage("Running algorithm...");
-                        startTime = System.nanoTime();
-                        Tuple result = Algo.MainAlgo(map, Start, End, AlgoChoice.getValue());
-                        endTime = System.nanoTime();
-                        algorithmElapsedTime = (endTime - startTime) / 1e6; // milliseconds
+                    }
+                };
 
+                Task<Tuple> task2 = new Task<Tuple>() {
+                    @Override
+                    protected Tuple call() throws Exception {
+                        try {
+                            // Your existing task code
+                            Runtime runtime = Runtime.getRuntime();
+                            System.gc();
+    
+                            long memoryBefore = runtime.totalMemory() - runtime.freeMemory();
+    
+                            
+                            // Background task: Run algorithm
 
+                            long startTime = System.nanoTime();
+                            result = Algo.MainAlgo(map, Start, End, AlgoChoice.getValue());
+                            long endTime = System.nanoTime();
+                            algorithmElapsedTime = (endTime - startTime) / 1e6; // milliseconds
+                            long memoryAfter = runtime.totalMemory() - runtime.freeMemory();
+    
+                            // Calculate memory usage
+                            memoryUsage = memoryAfter - memoryBefore;
+    
+                            // Print memory usage
+                            System.out.println(result.x);
+                            System.out.println("Memory Usage: " + memoryUsage / (1024 * 1024) + " MB");
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                         return result;
+                    
                     }
                 };
 
                 progressBar.progressProperty().bind(task.progressProperty());
 
-                task.setOnSucceeded(e -> {
-                    makingGraph.setVisible(false);
-                    Tuple result = task.getValue();
+                task2.setOnSucceeded(e -> {
+                    Tuple result = task2.getValue();
                     nodeVisited.setText("Node visited: " + result.y);
                     nodeVisited.setVisible(true);
                     ObservableList<String> items = FXCollections.observableArrayList(result.x);
                     listAnswer.setItems(items);
 
-                    progressBar.setVisible(false);
                     time1.setVisible(true);
                     Platform.runLater(() -> {
                         time1.setText("Graph making: " + graphElapsedTime + "ms");
                         time.setText("Algorithm exec: " + algorithmElapsedTime + "ms");
+                        MemoryUsage.setText("Memory used: " + memoryUsage/(1024 * 1024) + " MB");
+                        MemoryUsage.setVisible(true);
                         time.setVisible(true);
                         time1.setVisible(true);
                     });
                 });
 
+                task.setOnSucceeded(e -> {
+                    makingGraph.setVisible(false);
+                    progressBar.setVisible(false);
+                    new Thread(task2).start();
+                });
+
                 progressBar.setVisible(true);
 
                 new Thread(task).start();
-                    }
                 }
+            }
     }
 
     @FXML

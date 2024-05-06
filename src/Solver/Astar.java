@@ -35,6 +35,9 @@ public class Astar {
 			}
 		}
 		Tuple returnTuple = new Tuple(pathResult, nodeVisited);
+		if (!found) {
+			returnTuple.x.add("Path not found");
+		}
         return returnTuple;
 	}
 }
