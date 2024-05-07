@@ -38,6 +38,7 @@ Untuk menjalankan program ini diperlukan:
 - JavaFX SDK version 22.0.1
 (https://gluonhq.com/products/javafx/) untuk windows dan linux (filter pada website untuk memilih)
 - Langkah-langkah setup javafx bisa dilihat pada pranala: https://openjfx.io/openjfx-docs/
+- Langkah setup javafx ke vs code bisa dilihat pada pranala youtube: https://www.youtube.com/watch?v=AubJaosfI-0&t=369s&ab_channel=BoostMyTool 
 
 ## Usage
 Windows :
