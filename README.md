@@ -51,11 +51,14 @@ Windows :
 - Setelah program GUI berjalan dengan baik, masukkan input sesuai keinginan.
 
 ## Features
-1. Validasi kata masukan.
+1. Tidak memedulikan besar kecilnya huruf kata masukan.
+3. Tidak memedulikan spasi sebelum huruf pertama dan sesudah huruf terakhir.
 2. Menampilkan memory usage.
 
 ## Restrictions
 Folder word hanya memiliki kumpulan kata dengan jumlah huruf hingga 15.
+Tidak bisa menerima masukan berupa file hanya bisa ketik manual.
+Test pada folder test harus diketikkan manual ke program.
 
 ## Identity
 Abdullah Mubarak. 13522101. Mahasiswa tahun ke-2 Teknik Informatika ITB.

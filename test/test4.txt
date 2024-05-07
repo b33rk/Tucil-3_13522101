@@ -1,0 +1,2 @@
+Word awal: Monster
+Word akhir: Thunder

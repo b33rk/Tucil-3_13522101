@@ -1,0 +1,2 @@
+Word awal: Baby
+Word akhir: Word
