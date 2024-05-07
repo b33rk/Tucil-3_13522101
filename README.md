@@ -9,15 +9,12 @@
 * [Usage](#usage)
 * [Features](#features)
 * [Restrictions](#restriction)
+* [Identity](#identity)
 <!-- * [License](#license) -->
 
 
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
+Program Word Ladder Solver adalah sebuah program yang bisa menemukan solusi permainan Word Ladder dengan pendekatan tiga algoritma: Uniform Cost Search(UCS), Greedy Best First Search(GBFS), dan A-star Search.
 
 
 ## Technologies Used
@@ -46,7 +43,8 @@ Untuk menjalankan program ini diperlukan:
 Windows :
 - Pastikan sedang di folder src
 - compile:
-`javac --module-path "C:\Program Files\Java\javafx-sdk-22.0.1\lib" --add-modules javafx.controls,javafx.fxml App.java MainSceneController.java`
+`javac -d "../bin" --module-path "C:\Program Files\Java\javafx-sdk-22.0.1\lib" --add-modules javafx.controls,javafx.fxml App.java MainSceneController.java`
+- Pastikan sedang di folder bin
 - run program:
 `java --module-path "C:\Program Files\Java\javafx-sdk-22.0.1\lib" --add-modules javafx.controls,javafx.fxml App`
 - keterangan: "C:\Program Files\Java\javafx-sdk-22.0.1\lib" diganti dengan letak javafx-sdk/lib pada device pengguna
@@ -58,3 +56,6 @@ Windows :
 
 ## Restrictions
 Folder word hanya memiliki kumpulan kata dengan jumlah huruf hingga 15.
+
+## Identity
+Abdullah Mubarak. 13522101. Mahasiswa tahun ke-2 Teknik Informatika ITB.

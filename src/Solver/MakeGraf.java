@@ -7,7 +7,6 @@ import java.util.HashMap;
 public class MakeGraf {
     public static Map<String, ArrayList<String>> makeGraf(ArrayList<String> dictionary) {
         Map<String, ArrayList<String>> map = new HashMap<>();
-
         
         for (String curr : dictionary) {
             ArrayList<String> currNeighbor = new ArrayList<>();
